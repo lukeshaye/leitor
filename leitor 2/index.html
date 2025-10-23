@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor Rápido</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js"></script>
+</head>
+<body>
+
+    <div class="reader-container">
+        <div id="rsvp-reader-view">
+            <span id="word-display">Carregue um arquivo ou cole um texto</span>
+        </div>
+
+        <div id="traditional-reader-view" class="hidden">
+            </div>
+    </div>
+
+    <div class="bottom-controls-wrapper">
+        <div class="controls">
+            <input type="file" id="file-input" accept=".txt, .pdf">
+            
+            <button id="open-text-modal-btn">Colar Texto</button>
+            
+            <div class="rsvp-controls">
+                <div class="speed-control">
+                    <label for="wpm-input">Palavras/Min:</label>
+                    <input type="number" id="wpm-input" value="400" min="50" step="10">
+                </div>
+                <div class="font-size-control">
+                    <label for="font-size-input">Fonte Dinâm. (px):</label>
+                    <input type="number" id="font-size-input" value="80" min="10" step="2">
+                </div>
+            </div>
+
+            <div class="traditional-controls hidden">
+                <div class="font-size-control">
+                    <label for="traditional-font-size-input">Fonte Texto (px):</label>
+                    <input type="number" id="traditional-font-size-input" value="18" min="8" step="1">
+                </div>
+            </div>
+            
+            <button id="start-pause-btn" class="rsvp-controls" disabled>Iniciar</button>
+            <button id="restart-btn" class="rsvp-controls" disabled>Reiniciar</button>
+            
+            <button id="theme-toggle-btn">Modo Escuro</button>
+            <button id="fullscreen-btn">Tela Cheia</button>
+            
+            <button id="mode-toggle-btn">Modo Tradicional</button>
+        </div>
+        
+        </div>
+
+    <div id="text-modal-overlay" class="hidden">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            <h3>Colar Texto</h3>
+            <p>Cole ou digite o texto que deseja ler abaixo:</p>
+            
+            <div class="text-input-area">
+                <textarea id="textarea-input" rows="10" placeholder="Ou cole seu texto aqui..."></textarea>
+                <button id="load-text-btn">Carregar Texto</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
