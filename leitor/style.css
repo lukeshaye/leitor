@@ -1,0 +1,142 @@
+/* --- Configurações Globais --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* NOVO: Classe utilitária para esconder elementos */
+.hidden {
+    display: none !important;
+}
+
+/* --- Controles --- */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.controls button, .controls input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.controls button { cursor: pointer; }
+.controls input { width: 70px; }
+
+.speed-control, .font-size-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* --- Área de Texto --- */
+.text-input-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.text-input-area textarea, .text-input-area button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.text-input-area textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+.text-input-area button { cursor: pointer; }
+
+
+/* --- Container dos Leitores --- */
+.reader-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex; /* Usamos flex para que os filhos ocupem o espaço */
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    min-height: 300px;
+    background-color: inherit;
+}
+
+/* --- Leitor Dinâmico (RSVP) --- */
+#rsvp-reader-view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#word-display {
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    transition: font-size 0.2s; 
+}
+
+/* --- NOVO: Leitor Tradicional --- */
+#traditional-reader-view {
+    width: 100%;
+    height: 100%;
+    padding: 20px 30px;
+    box-sizing: border-box; /* Para o padding não quebrar o layout */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+    font-size: 18px; /* Tamanho da fonte padrão, será controlado pelo JS */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    transition: font-size 0.2s;
+}
+
+/* --- Modo Escuro --- */
+body.dark-mode .controls button,
+body.dark-mode .controls input,
+body.dark-mode .text-input-area button,
+body.dark-mode .text-input-area textarea {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+body.dark-mode .reader-container {
+    border-color: #555;
+}
+
+/* --- Tela Cheia (para os dois modos) --- */
+#rsvp-reader-view:fullscreen,
+#traditional-reader-view:fullscreen {
+    border: none;
+    /* Garante que a rolagem funcione em tela cheia */
+    height: 100vh; 
+    overflow-y: auto;
+}
+
+#rsvp-reader-view:fullscreen ~ .controls,
+#rsvp-reader-view:fullscreen ~ .text-input-area,
+#traditional-reader-view:fullscreen ~ .controls,
+#traditional-reader-view:fullscreen ~ .text-input-area {
+    display: none;
+}
